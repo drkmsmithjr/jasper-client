@@ -25,7 +25,7 @@ def run():
     # name
     simple_request('first_name', 'First name')
     simple_request('last_name', 'Last name')
-    simple_request('keyword','Key Word Command: typically JASPER')
+    simple_request('keyword','Key Word Command: [RETURN] for JASPER')
 
     # gmail
     print("\nJasper uses your Gmail to send notifications. Alternatively, " +
