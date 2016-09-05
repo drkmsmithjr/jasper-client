@@ -111,13 +111,28 @@ class Jasper(object):
 
     def run(self):
         if 'first_name' in self.config:
-            salutation = ("How can I be of service, %s?"
-                          % self.config["first_name"])
+            if 'keyword' in self.config:
+                 salutation = ("Hi %s, %s will be ready to take commands shortly"
+                                 % (self.config["first_name"],self.config["keyword"]))
+            else:
+                 salutation = ("Hi %s, Jasper will be ready to take commands shortly"
+                                 % self.config["first_name"])
+                
         else:
-            salutation = "How can I be of service?"
-        self.mic.say(salutation)
+            if 'keyword' in self.config:
+                 salutation = ("%s is ready to take commands"
+                                 % self.confi["keyword"])
+            else:
+                 salutation = ("Jasper will be ready to take commands shortly")
 
-        conversation = Conversation("JASPER", self.mic, self.config)
+        self.mic.say(salutation)
+       
+        # Setting the engine to detect "keyword" otherwise, default to "JASPER"
+        if 'keyword' in self.config:
+            conversation = Conversation(self.config["keyword"], self.mic, self.config)
+        else:
+            conversation = Conversation("JASPER", self.mic, self.config)
+
         conversation.handleForever()
 
 if __name__ == "__main__":
