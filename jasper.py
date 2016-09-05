@@ -112,10 +112,10 @@ class Jasper(object):
     def run(self):
         if 'first_name' in self.config:
             if 'keyword' in self.config:
-                 salutation = ("Hi %s, %s will be ready to take commands shortly"
+                 salutation = ("Hi %s, my name is %s. what is your command"
                                  % (self.config["first_name"],self.config["keyword"]))
             else:
-                 salutation = ("Hi %s, Jasper will be ready to take commands shortly"
+                 salutation = ("Hi %s, my name is Jasper. what is your command"
                                  % self.config["first_name"])
                 
         else:
@@ -123,7 +123,7 @@ class Jasper(object):
                  salutation = ("%s is ready to take commands"
                                  % self.confi["keyword"])
             else:
-                 salutation = ("Jasper will be ready to take commands shortly")
+                 salutation = ("Jasper is ready to take commands")
 
         self.mic.say(salutation)
        
